@@ -1,0 +1,25 @@
+{
+  "short_name": "Zimonline",
+  "name": "Emmersive online platform for buyers and sellers",
+  "icons": [
+    {
+      "src": "favic.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favic.png",
+      "type": "image/png",
+      "sizes": "300x300"
+    },
+    {
+      "src": "favic.png",
+      "type": "image/png",
+      "sizes": "300x300"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
