@@ -3,19 +3,19 @@
   "name": "Emmersive online platform for buyers and sellers",
   "icons": [
     {
-      "src": "favic.png",
+      "src": "favicon.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "favic.png",
+      "src": "favicon.png",
       "type": "image/png",
-      "sizes": "300x300"
+      "sizes": "400x331"
     },
     {
-      "src": "favic.png",
+      "src": "favicon.png",
       "type": "image/png",
-      "sizes": "300x300"
+      "sizes": "400x331"
     }
   ],
   "start_url": ".",

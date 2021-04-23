@@ -11,6 +11,7 @@ import { apiUrl } from '../API/apiUrl';
 import { GridSpinner } from '../Components/Loading';
 import { useStateValue } from '../StateContext/StateProvider';
 import { sort_by } from '../Helpers/Sort';
+import Text from '../Components/Text';
 
 function Home() {
     // const [checked, setChecked] = useState(true);
@@ -64,23 +65,35 @@ function Home() {
 
     return (
         <General>
+            {/* <div className="sda">
+                <div className="relative dark:bg-gray-900 py-2">
+                    <div className="flex flex-row pl-2 items-center whitespace-nowrap space-x-5 sm:space-x-10  overflow-hidden ">
+                        {apiCats?.map(cats => (
+                            <Text
+                                content={cats.name}
+                                className="cursor-pointer text-[0.9rem] transition duration-100 transform hover:scale-125 active:text-green-600" />
+                        ))}
+                    </div>
+                </div>
+            </div> */}
             <div className="div    pb-8">
-                <div className="relative pt-8 md:pt-16 md:pb-32 pb-4 flex content-center items-center justify-center overflow-hidden"
+
+                <div className="relative pt-8 md:pt-16 md:pb-16 pb-4 flex content-center items-center justify-center overflow-hidden"
                     style={{
                         minHeight: "75vh"
                     }}>
-                    <div className="absolute top-0 w-full h-full bg-center md:px-24 px-0 pb-6 bg-cover dark:bg-gray-900 bg-gray-50"
-                        // style={{
-                        //     backgroundImage: `url("${bannerG}")`,
-                        //     backgroundSize: '100%'
-                        // }}
-                        >
-                            <img src={bannerG} alt="banner" className="w-full"/>
+                    <div className="absolute top-0 w-full h-72 md:px-24 px-2 overflow-hidden bg-center pb-6 bg-cover dark:bg-gray-900 bg-gray-50"
+                    // style={{
+                    //     backgroundImage: `url("${bannerG}")`,
+                    //     backgroundSize: '100%'
+                    // }}
+                    >
+                        <img src={bannerG} alt="banner" className="w-full" />
                         <span id="blackOverlay" className="w-full h-full absolute"></span>
                     </div>
                 </div>
 
-                <section className="md:-mt-24 -mt-96 md:px-20 px-4">
+                <section className="md:-mt-44 -mt-96 md:px-20 px-4">
                     <div className="container mx-auto px-4">
                         <div className="flex flex-wrap">
                             <div className="lg:pt-12 pt-6 w-full px-4 text-center">
@@ -95,7 +108,7 @@ function Home() {
                                             </span>
                                             {apiCats?.map(category => (
                                                 <CheckItem
-                                                    key={category._id}  
+                                                    key={category._id}
                                                     text={category.name}
                                                     id={category.id}
                                                 />

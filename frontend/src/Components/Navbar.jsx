@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link, useHistory } from 'react-router-dom'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import { useStateValue } from "../StateContext/StateProvider";
 import Badge from '@material-ui/core/Badge';
 import SearchIcon from '@material-ui/icons/Search';
 import { AppBar } from "@material-ui/core";
-import logo from '../Images/logo.png'
+import logo from '../Images/favicon.png'
 import useDarkMode from "../Helpers/useDarkMode";
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
+import axios from "axios";
+import { apiUrl } from "../API/apiUrl";
+import Text from "./Text";
 
 export default function Navbar(props) {
     //for settin the dark theme
@@ -21,11 +23,16 @@ export default function Navbar(props) {
     const [globCurrency, setGlobCurrency] = useState('')
     const history = useHistory()
     const [{ basket }, dispatch] = useStateValue()
+    const [apiCats, setApiCats] = useState()
 
     const logout = (e) => {
         e.preventDefault()
         localStorage.removeItem('zomtoken')
         localStorage.removeItem('zomuser')
+        dispatch({
+            type: 'SET_USER',
+            user: null
+        })
         setTimeout(() => {
             history.push('/')
         }, 1500);
@@ -38,17 +45,28 @@ export default function Navbar(props) {
         })
     }, [globCurrency])
 
+    useEffect(() => {
+        // GET request using fetch inside useEffect React hook
+        fetch(`${apiUrl}/category/all`)
+            .then(response => response.json())
+            .then(data => setApiCats(data.categories));
+        // empty dependency array means this effect will only run once (like componentDidMount in classes)
+        // console.log(apiCats)
+
+    }, [])
+
 
     return (
-        <AppBar position="fixed" elevation={0}>
-            <nav className={"bg-white dark:bg-gray-900 shadow dark:border-gray-200  flex flex-wrap items-center justify-between px-2 py-2 border-b border-gray-200 dark:border-gray-800 navbar-expand-lg"}>
+        <AppBar elevation={0}>
+            <nav className={"bg-white dark:bg-gray-900 shadow  flex flex-wrap items-center justify-between px-2 py-3 border-b border-gray-200 dark:border-gray-700 navbar-expand-lg"}>
                 <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full flex flex-row items-center justify-between lg:w-auto lg:static lg:justify-start">
 
                         <div className="flex md:flex-row w-full flex-col items-center">
                             <div className="itt flex w-full flex-row items-center">
-                                <Link to='/' className="px-3 p-2 flex items-center">
-                                    <img src={logo} alt="logo" className="md:w-20 w-16 md:mr-8 mr-2" />
+                                <Link to='/' className="px-3 p-2 flex items-center flex-row">
+                                    <img src={logo} alt="logo" className="md:w-8 w-8 " />
+                                    <p className="md:mr-16 mr-2 md:font-semibold md:flex hidden text-sm text-gray-700 dark:text-white">WeLink</p>
                                 </Link>
                                 {/* search bar */}
                                 <div className="w-full">
@@ -111,7 +129,7 @@ export default function Navbar(props) {
                         id="example-navbar-warning"
                     >
                         <ul className="flex flex-col items-center lg:flex-row list-none lg:ml-auto">
-                           
+
 
                             {JSON.parse(user)?.role === "seller" ? <>
                                 <li className="md:flex hidden items-center">

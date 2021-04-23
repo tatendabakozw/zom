@@ -9,6 +9,7 @@ import { useHistory } from 'react-router';
 import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import Money from './Money';
+import { db } from '../firebase';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,6 +32,7 @@ const ServiceItem = ({ className, picture, category, userpic, itemname, rating, 
     const [save, setSaved] = useState(false)
     const [{currency}] = useStateValue()
     const [dispCurrency, setDispCurrency] = useState('')
+    const [serviceImage, setServiceImage] = useState()
 
     const addTocart = (e) => {
         e.preventDefault()
@@ -88,9 +90,20 @@ const ServiceItem = ({ className, picture, category, userpic, itemname, rating, 
         // history.push('/dresses?color=blue')
     }
 
+    // const getFirebaseImage = () =>{
+    //     console.log('get firebase iamge')
+    // }
+
     useEffect(()=>{
         setDispCurrency(currency)
     },[currency])
+
+    useEffect(()=>{
+        db.collection('services').onSnapshot(snapshot=>{
+            setServiceImage(snapshot.docs.map(doc=>doc.data))
+        })
+        console.log(serviceImage)
+    },[])
 
     return (
         <div className={` ${className} items min-w-52 border dark:border-gray-900 dark:bg-gray-800 rounded-md overflow-hidden hover:shadow-lg hover:border-none cursor-pointer`}>

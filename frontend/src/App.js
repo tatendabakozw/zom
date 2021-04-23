@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { AnimatePresence } from "framer-motion";
+import 'tailwindcss/tailwind.css'
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Howitworks from './Pages/Howitworks';

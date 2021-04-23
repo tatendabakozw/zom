@@ -4,6 +4,7 @@ import General from '../Layout/General'
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import { apiUrl } from '../API/apiUrl'
 import { useHistory } from 'react-router'
+import mpicture from '../Images/favic.png'
 
 
 
@@ -30,6 +31,9 @@ function BecomeASeller() {
 
     const becomeSeller = (e) => {
         e.preventDefault()
+        if(!picture){
+            setPicture(mpicture)
+        }
         let formData = new FormData();
         formData.append('proPictures', picture);
         formData.append('location', address);

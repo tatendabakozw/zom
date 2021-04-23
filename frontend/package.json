@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^12.1.10",
     "autoprefixer": "^9",
     "axios": "^0.21.1",
+    "firebase": "^8.4.1",
     "framer-motion": "^4.1.2",
     "postcss": "^7",
     "react": "^17.0.1",
@@ -22,6 +23,7 @@
     "react-scripts": "4.0.2",
     "socket.io-client": "^4.0.1",
     "styled-components": "^5.2.3",
+    "tailwind-scrollbar-hide": "^1.0.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "web-vitals": "^1.0.1"
   },

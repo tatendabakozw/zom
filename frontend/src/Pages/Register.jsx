@@ -16,6 +16,7 @@ function Register() {
     const [password, setPassword] = useState('')
     const [msg, setMsg] = useState('')
     const [passwordVisible, setPasswordVisible] = useState(false)
+    const [passwordVisible2, setPasswordVisible2] = useState(false)
     const history = useHistory()
 
     const registerUser = (e) => {
@@ -103,13 +104,13 @@ function Register() {
                         <label htmlFor="passwordd" className="text-gray-700 text-sm mb-1 dark:text-gray-200 font-semibold">Password</label>
                         <div className="border-2 border-green-400 rounded w-full px-2 text-gray-600 flex bg-white flex-row items-center">
                             <input
-                                type={passwordVisible ? "text" : "password"}
+                                type={passwordVisible2 ? "text" : "password"}
                                 id="email"
                                 onChange={e => setPassword(e.target.value)}
                                 placeholder="Enter password" className="outline-none rounded p-2 w-full" />
-                            {passwordVisible ? (<span onClick={() => setPasswordVisible(false)} className="cursor-pointer text-gray-600">
+                            {passwordVisible2 ? (<span onClick={() => setPasswordVisible2(false)} className="cursor-pointer text-gray-600">
                                 <VisibilityOffIcon />
-                            </span>) : (<span onClick={() => setPasswordVisible(true)} className="cursor-pointer text-gray-600">
+                            </span>) : (<span onClick={() => setPasswordVisible2(true)} className="cursor-pointer text-gray-600">
                                 <VisibilityIcon />
                             </span>)}
                         </div>
